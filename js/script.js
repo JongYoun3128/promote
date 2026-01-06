@@ -325,47 +325,47 @@ document.querySelectorAll(".case-card").forEach((card) => {
 });
 
 // 포트폴리오 무한 루프 애니메이션
-const portfolioFlow = document.querySelector('.portfolio-flow');
+const portfolioFlow = document.querySelector(".portfolio-flow");
 if (portfolioFlow) {
     const cards = portfolioFlow.innerHTML;
     portfolioFlow.innerHTML = cards + cards + cards;
-    
-    portfolioFlow.style.animation = 'none';
+
+    portfolioFlow.style.animation = "none";
     let portfolioPosition = 0;
     let isPortfolioPaused = false;
     let portfolioAnimationId = null;
-    
+
     function animatePortfolio() {
-        const firstCard = portfolioFlow.querySelector('.portfolio-card');
+        const firstCard = portfolioFlow.querySelector(".portfolio-card");
         if (!firstCard) return;
-        
+
         const cardWidth = firstCard.offsetWidth;
         const gap = 30;
         const totalWidth = cardWidth + gap;
         const resetPoint = totalWidth * 6;
-        
+
         if (!isPortfolioPaused) {
             portfolioPosition -= 0.8;
-            
+
             if (Math.abs(portfolioPosition) >= resetPoint) {
                 portfolioPosition = 0;
             }
-            
+
             portfolioFlow.style.transform = `translateX(${portfolioPosition}px)`;
         }
-        
+
         portfolioAnimationId = requestAnimationFrame(animatePortfolio);
     }
-    
+
     // 마우스 호버 시 애니메이션 멈춤
-    portfolioFlow.addEventListener('mouseenter', () => {
+    portfolioFlow.addEventListener("mouseenter", () => {
         isPortfolioPaused = true;
     });
-    
-    portfolioFlow.addEventListener('mouseleave', () => {
+
+    portfolioFlow.addEventListener("mouseleave", () => {
         isPortfolioPaused = false;
     });
-    
+
     animatePortfolio();
 }
 
@@ -392,75 +392,81 @@ document.querySelectorAll(".review-card").forEach((card) => {
 });
 
 // 배너 무한 스크롤 - JavaScript 방식
-const bannerTrack = document.querySelector('.banner-track');
+const bannerTrack = document.querySelector(".banner-track");
 if (bannerTrack) {
     const items = bannerTrack.innerHTML;
     bannerTrack.innerHTML = items + items;
-    
-    bannerTrack.style.animation = 'none';
+
+    bannerTrack.style.animation = "none";
     let bannerPosition = 0;
-    
+
     function animateBanner() {
-        const firstItem = bannerTrack.querySelector('.banner-item');
+        const firstItem = bannerTrack.querySelector(".banner-item");
         if (!firstItem) return;
-        
-        const itemWidth = firstItem.offsetWidth + parseFloat(window.getComputedStyle(firstItem).marginLeft) + parseFloat(window.getComputedStyle(firstItem).marginRight);
+
+        const itemWidth =
+            firstItem.offsetWidth +
+            parseFloat(window.getComputedStyle(firstItem).marginLeft) +
+            parseFloat(window.getComputedStyle(firstItem).marginRight);
         const resetPoint = itemWidth * 4;
-        
+
         bannerPosition -= 1;
-        
+
         if (Math.abs(bannerPosition) >= resetPoint) {
             bannerPosition = 0;
         }
-        
+
         bannerTrack.style.transform = `translateX(${bannerPosition}px)`;
         requestAnimationFrame(animateBanner);
     }
-    
+
     animateBanner();
 }
 
 // 파트너사 무한 스크롤 - JavaScript 방식
-const partnersFlow = document.querySelector('.partners-flow');
+const partnersFlow = document.querySelector(".partners-flow");
 if (partnersFlow) {
     const boxes = partnersFlow.innerHTML;
     partnersFlow.innerHTML = boxes + boxes + boxes;
-    
-    partnersFlow.style.animation = 'none';
+
+    partnersFlow.style.animation = "none";
     let partnerPosition = 0;
-    
+
     function animatePartners() {
-        const firstBox = partnersFlow.querySelector('.partner-box');
+        const firstBox = partnersFlow.querySelector(".partner-box");
         if (!firstBox) return;
-        
-        const boxWidth = firstBox.offsetWidth + parseFloat(window.getComputedStyle(firstBox).marginLeft) + parseFloat(window.getComputedStyle(firstBox).marginRight);
+
+        const boxWidth =
+            firstBox.offsetWidth +
+            parseFloat(window.getComputedStyle(firstBox).marginLeft) +
+            parseFloat(window.getComputedStyle(firstBox).marginRight);
         const resetPoint = boxWidth * 4;
-        
+
         partnerPosition -= 0.5;
-        
+
         if (Math.abs(partnerPosition) >= resetPoint) {
             partnerPosition = 0;
         }
-        
+
         partnersFlow.style.transform = `translateX(${partnerPosition}px)`;
         requestAnimationFrame(animatePartners);
     }
-    
+
     animatePartners();
 }
 
 // 유튜브 갤러리 무한 루프
-const galleryRows = document.querySelectorAll('.gallery-row');
-galleryRows.forEach(row => {
+const galleryRows = document.querySelectorAll(".gallery-row");
+galleryRows.forEach((row) => {
     const cards = row.innerHTML;
     row.innerHTML = cards + cards + cards;
-    
-    row.style.animation = 'none';
+
+    row.style.animation = "none";
     let position = 0;
-    const speed = row.classList.contains('row-left') ? -1 : 1;
-    
+    const speed = row.classList.contains("row-left") ? -1 : 1;
+
     function getCardWidth() {
-        const firstCard = row.querySelector('.thumbnail-card');
+        const firstCard = row.querySelector(".thumbnail-card");
         if (firstCard) {
             const style = window.getComputedStyle(firstCard);
             const width = firstCard.offsetWidth;
@@ -470,13 +476,13 @@ galleryRows.forEach(row => {
         }
         return 340;
     }
-    
+
     function animate() {
         const cardWidth = getCardWidth();
         const resetPoint = cardWidth * 6;
-        
+
         position += speed * 1;
-        
+
         if (speed < 0) {
             if (Math.abs(position) >= resetPoint) {
                 position = 0;
@@ -486,102 +492,102 @@ galleryRows.forEach(row => {
                 position = 0;
             }
         }
-        
+
         row.style.transform = `translateX(${position}px)`;
         requestAnimationFrame(animate);
     }
-    
+
     animate();
 });
 
 // 유튜브 영상 모달 기능
-const videoModal = document.getElementById('videoModal');
-const videoFrame = document.getElementById('videoFrame');
-const modalClose = document.querySelector('.modal-close');
-const modalOverlay = document.querySelector('.modal-overlay');
+const videoModal = document.getElementById("videoModal");
+const videoFrame = document.getElementById("videoFrame");
+const modalClose = document.querySelector(".modal-close");
+const modalOverlay = document.querySelector(".modal-overlay");
 
-document.addEventListener('click', function(e) {
-    const card = e.target.closest('.thumbnail-card, .portfolio-card');
+document.addEventListener("click", function (e) {
+    const card = e.target.closest(".thumbnail-card, .portfolio-card");
     if (card) {
         e.preventDefault();
-        const videoId = card.getAttribute('data-video-id');
+        const videoId = card.getAttribute("data-video-id");
         const videoUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=0&rel=0`;
         videoFrame.src = videoUrl;
-        videoModal.style.display = 'flex';
+        videoModal.style.display = "flex";
         setTimeout(() => {
-            videoModal.classList.add('active');
+            videoModal.classList.add("active");
         }, 10);
-        document.body.style.overflow = 'hidden';
+        document.body.style.overflow = "hidden";
     }
 });
 
 function closeVideoModal() {
-    videoModal.classList.remove('active');
+    videoModal.classList.remove("active");
     setTimeout(() => {
-        videoModal.style.display = 'none';
-        videoFrame.src = '';
-        document.body.style.overflow = '';
+        videoModal.style.display = "none";
+        videoFrame.src = "";
+        document.body.style.overflow = "";
     }, 300);
 }
 
-modalClose.addEventListener('click', closeVideoModal);
-modalOverlay.addEventListener('click', closeVideoModal);
+modalClose.addEventListener("click", closeVideoModal);
+modalOverlay.addEventListener("click", closeVideoModal);
 
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && videoModal.classList.contains('active')) {
+document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && videoModal.classList.contains("active")) {
         closeVideoModal();
     }
 });
 
 // 중식당 향화 슬라이드 기능
-const restaurantSlideshow = document.querySelector('.restaurant-slideshow');
+const restaurantSlideshow = document.querySelector(".restaurant-slideshow");
 if (restaurantSlideshow) {
-    const images = restaurantSlideshow.querySelectorAll('.restaurant-img');
-    const dots = restaurantSlideshow.querySelectorAll('.dot');
+    const images = restaurantSlideshow.querySelectorAll(".restaurant-img");
+    const dots = restaurantSlideshow.querySelectorAll(".dot");
     let currentIndex = 0;
     let slideInterval;
-    
+
     function showSlide(index) {
         // 모든 이미지 숨기기
-        images.forEach(img => img.classList.remove('active'));
-        dots.forEach(dot => dot.classList.remove('active'));
-        
+        images.forEach((img) => img.classList.remove("active"));
+        dots.forEach((dot) => dot.classList.remove("active"));
+
         // 현재 이미지만 보이기
-        images[index].classList.add('active');
-        dots[index].classList.add('active');
+        images[index].classList.add("active");
+        dots[index].classList.add("active");
         currentIndex = index;
     }
-    
+
     function nextSlide() {
         let nextIndex = (currentIndex + 1) % images.length;
         showSlide(nextIndex);
     }
-    
+
     function startSlideshow() {
-        slideInterval = setInterval(nextSlide, 3000); // 3초마다 자동 전환
+        slideInterval = setInterval(nextSlide, 1000); // 3초마다 자동 전환
     }
-    
+
     function stopSlideshow() {
         clearInterval(slideInterval);
     }
-    
+
     // 점 클릭 이벤트
     dots.forEach((dot, index) => {
-        dot.addEventListener('click', (e) => {
+        dot.addEventListener("click", (e) => {
             e.stopPropagation();
             showSlide(index);
             stopSlideshow();
             startSlideshow(); // 클릭 후 다시 자동 재생
         });
     });
-    
+
     // 카드에 마우스 올리면 자동 재생 멈춤
-    const restaurantCard = restaurantSlideshow.closest('.portfolio-card');
+    const restaurantCard = restaurantSlideshow.closest(".portfolio-card");
     if (restaurantCard) {
-        restaurantCard.addEventListener('mouseenter', stopSlideshow);
-        restaurantCard.addEventListener('mouseleave', startSlideshow);
+        restaurantCard.addEventListener("mouseenter", stopSlideshow);
+        restaurantCard.addEventListener("mouseleave", startSlideshow);
     }
-    
+
     // 슬라이드쇼 시작
     startSlideshow();
 }

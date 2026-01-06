@@ -1893,7 +1893,9 @@ section.visible {
         padding: 14px 30px;
         font-size: 15px;
     }
-
+    .example {
+        border: 1px solid black;
+    }
     .logo {
         font-size: 17px;
     }
