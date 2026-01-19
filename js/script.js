@@ -10,7 +10,7 @@ const scrollObserver = new IntersectionObserver(
     {
         threshold: 0.05,
         rootMargin: "0px 0px 0px 0px",
-    }
+    },
 );
 
 // 모든 섹션 관찰 (패키지 섹션 제외)
@@ -40,7 +40,7 @@ const packageObserver = new IntersectionObserver(
     },
     {
         threshold: 0.05,
-    }
+    },
 );
 
 document.querySelectorAll(".package-item").forEach((item) => {
@@ -75,7 +75,7 @@ const pricingObserver = new IntersectionObserver(
     },
     {
         threshold: 0.2,
-    }
+    },
 );
 
 document.querySelectorAll(".pricing-card").forEach((card) => {
@@ -83,24 +83,6 @@ document.querySelectorAll(".pricing-card").forEach((card) => {
     card.style.transform = "scale(0.9)";
     card.style.transition = "all 0.5s ease";
     pricingObserver.observe(card);
-});
-
-// 스크롤 시 헤더 스타일 변경
-let lastScrollTop = 0;
-const header = document.querySelector(".header");
-
-window.addEventListener("scroll", () => {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-    if (scrollTop > 100) {
-        header.style.backgroundColor = "rgba(255, 255, 255, 0.98)";
-        header.style.boxShadow = "0 2px 10px rgba(0,0,0,0.1)";
-    } else {
-        header.style.backgroundColor = "#fff";
-        header.style.boxShadow = "0 1px 3px rgba(0,0,0,0.05)";
-    }
-
-    lastScrollTop = scrollTop;
 });
 
 // 페이지 로드 시 히어로 섹션 표시
@@ -170,7 +152,7 @@ const metricsObserver = new IntersectionObserver(
             }
         });
     },
-    { threshold: 0.3 }
+    { threshold: 0.3 },
 );
 
 const metricsSection = document.querySelector(".metrics-section");
@@ -202,7 +184,7 @@ const featureObserver = new IntersectionObserver(
     },
     {
         threshold: 0.3,
-    }
+    },
 );
 
 document.querySelectorAll(".monthly-features li").forEach((item) => {
@@ -226,7 +208,7 @@ const optionObserver = new IntersectionObserver(
     },
     {
         threshold: 0.1,
-    }
+    },
 );
 
 document.querySelectorAll(".option-card").forEach((card) => {
@@ -248,7 +230,7 @@ const benefitObserver = new IntersectionObserver(
             }
         });
     },
-    { threshold: 0.05 }
+    { threshold: 0.05 },
 );
 
 document.querySelectorAll(".benefit-card").forEach((card) => {
@@ -270,7 +252,7 @@ const workflowObserver = new IntersectionObserver(
             }
         });
     },
-    { threshold: 0.1 }
+    { threshold: 0.1 },
 );
 
 document.querySelectorAll(".workflow-step").forEach((step) => {
@@ -292,7 +274,7 @@ const checklistObserver = new IntersectionObserver(
             }
         });
     },
-    { threshold: 0.05 }
+    { threshold: 0.05 },
 );
 
 document.querySelectorAll(".checklist-item").forEach((item) => {
@@ -314,7 +296,7 @@ const caseObserver = new IntersectionObserver(
             }
         });
     },
-    { threshold: 0.05 }
+    { threshold: 0.05 },
 );
 
 document.querySelectorAll(".case-card").forEach((card) => {
@@ -381,7 +363,7 @@ const reviewObserver = new IntersectionObserver(
             }
         });
     },
-    { threshold: 0.05 }
+    { threshold: 0.05 },
 );
 
 document.querySelectorAll(".review-card").forEach((card) => {
